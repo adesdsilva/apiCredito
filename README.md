@@ -1,207 +1,160 @@
-apiCredito - Aplicação Fullstack com Spring Boot e Angular
-Bem-vindo ao apiCredito, uma aplicação fullstack projetada para gerenciar operações de crédito. Este projeto integra um backend robusto desenvolvido com Spring Boot e um frontend responsivo criado com Angular, ambos containerizados com Docker para um deployment simplificado. A aplicação inclui um banco de dados PostgreSQL, uma API RESTful e um frontend compatível com dispositivos móveis.
+Bem-vindo à **Consulta de Crédito - API** (apiCredito), uma aplicação fullstack projetada para a consulta e gerenciamento de operações de crédito. Este projeto integra um backend robusto desenvolvido com Spring Boot e um frontend responsivo criado com Angular, ambos containerizados com Docker para um deployment simplificado.
 
-📋 Visão Geral
-Backend: Construído com Spring Boot, a API oferece endpoints para gerenciar operações de crédito. Inclui testes unitários na camada de controle usando o banco H2 em memória e tratamento robusto de exceções.
-Frontend: Desenvolvido com Angular, o frontend é otimizado para desktops e dispositivos móveis. Pode ser servido localmente com ng serve e acessado em http://localhost:4200.
-Docker: Utiliza Docker Compose para orquestrar três contêineres: PostgreSQL (banco de dados), API Spring Boot e frontend Angular, inicializados com registros pré-carregados no banco.
-✨ Funcionalidades
-API RESTful para gestão de créditos.
-Tratamento de exceções para maior robustez.
-Testes na camada de controle com banco H2.
-Frontend compatível com dispositivos móveis.
-Deployment containerizado com PostgreSQL, API e frontend.
-📋 Pré-requisitos
+🔗 **Repositório:** [https://github.com/adesdsilva/apiCredito](https://github.com/adesdsilva/apiCredito)
 
-Ferramenta	Versão Recomendada	Descrição
-Docker	Última versão estável	Para contêineres e Docker Compose
-Docker Compose	Última versão estável	Para orquestração de contêineres
-Node.js	LTS (ex.: 18.x)	Para desenvolvimento do frontend
-npm	Incluído com Node.js	Gerenciador de pacotes do frontend
-Maven	3.8+	Para build do backend
-Java	17 (ou versão compatível)	Para execução do Spring Boot
-🌐 Endpoints
-Teste a API usando curl com os seguintes endpoints:
+---
 
-Obter Crédito por ID: http://localhost:8080/api/creditos/7891011
-bash
+## 📋 Visão Geral
 
-Collapse
+Esta aplicação fornece uma solução completa para consulta de créditos constituídos, oferecendo:
 
-Wrap
+*   **Backend (Spring Boot):** Uma API RESTful segura e eficiente para buscar informações de créditos por número de NFS-e ou número do crédito.
+*   **Frontend (Angular):** Uma interface de usuário moderna e responsiva para interagir com a API e visualizar os dados.
+*   **Banco de Dados (PostgreSQL):** Persistência dos dados de crédito.
+*   **Containerização (Docker):** Orquestração simplificada dos serviços (API, Frontend, Banco de Dados) usando Docker Compose, com dados pré-carregados para facilitar o teste.
 
-Run
+---
 
-Copy
-curl http://localhost:8080/api/creditos/7891011
-Obter Detalhes do Crédito: http://localhost:8080/api/creditos/credito/123456
-bash
+## ✨ Funcionalidades Principais
 
-Collapse
+*   ✅ API RESTful para consulta de créditos por NFS-e e número do crédito.
+*   🛡️ Tratamento robusto de exceções no backend.
+*   🧪 Testes unitários na camada de controle do backend (com H2).
+*   📱 Frontend responsivo compatível com desktops e dispositivos móveis.
+*   🐳 Deployment fácil e rápido com Docker Compose.
+*   🐘 Banco de dados PostgreSQL inicializado com dados de exemplo.
 
-Wrap
+---
 
-Run
+## 🛠️ Tecnologias Utilizadas
 
-Copy
-curl http://localhost:8080/api/creditos/credito/123456
-🚀 Iniciando o Projeto
-1. Clonar o Repositório
-bash
+*   **Backend:** <img src="https://img.shields.io/badge/Spring_Boot-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" alt="Spring Boot"/> `Java 17+` `Spring Data JPA` `Hibernate` `Maven`
+*   **Frontend:** <img src="https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white" alt="Angular"/> `Node.js (LTS)` `npm`
+*   **Banco de Dados:** <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=for-the-badge&logo=postgresql&logoColor=white" alt="PostgreSQL"/>
+*   **Containerização:** <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" alt="Docker"/> `Docker Compose`
+*   **Testes:** `JUnit 5` `Mockito` `H2 Database`
 
-Collapse
+---
 
-Wrap
+## 📋 Pré-requisitos
 
-Run
+Antes de começar, garanta que você tenha as seguintes ferramentas instaladas:
 
-Copy
-git clone https://github.com/adesdsilva/apiCredito.git
-cd apiCredito
-2. Construir e Executar com Docker
-O arquivo docker-compose.yml no repositório configura três contêineres:
+| Ferramenta       | Versão Recomendada | Descrição                       |
+| :--------------- | :----------------- | :------------------------------ |
+| Docker           | Última estável     | Para contêineres e Docker Compose |
+| Docker Compose   | Última estável     | Para orquestração de contêineres |
+| Node.js          | LTS (ex: 18.x)     | Para desenvolvimento do frontend  |
+| npm              | Incluído com Node.js | Gerenciador de pacotes frontend |
+| Maven            | 3.8+               | Para build do backend           |
+| Java             | 17 (ou compatível) | Para execução do Spring Boot    |
 
-postgres: Banco de dados PostgreSQL com registros pré-carregados.
-api: Backend Spring Boot.
-frontend: Frontend Angular.
-Execute os seguintes comandos para construir e iniciar os contêineres:
+---
 
-bash
+## 🚀 Iniciando com Docker (Recomendado)
 
-Collapse
+A forma mais simples de executar a aplicação completa é usando Docker Compose.
 
-Wrap
+1.  **Clonar o Repositório:**
+    ```bash
+    git clone https://github.com/adesdsilva/apiCredito.git
+    cd apiCredito
+    ```
 
-Run
+2.  **Construir e Iniciar os Contêineres:**
+    O `docker-compose.yml` configura os serviços: `postgres` (Banco de Dados), `api` (Backend) e `frontend` (Angular).
+    ```bash
+    docker-compose build
+    docker-compose up -d
+    ```
+    *   Aguarde alguns instantes para que os serviços iniciem.
+    *   O banco de dados será inicializado com dados de exemplo.
 
-Copy
-docker-compose build
-docker-compose up -d
-A API estará disponível em http://localhost:8080.
-O frontend estará disponível em http://localhost:4200 (servido pelo contêiner Angular).
-3. Parar e Remover Contêineres
-Para parar e remover os contêineres:
+3.  **Acessar a Aplicação:**
+    *   **API Backend:** Disponível em `http://localhost:8080`
+    *   **Frontend:** Disponível em `http://localhost:4200`
 
-bash
+4.  **Parar e Remover Contêineres:**
+    ```bash
+    docker-compose down
+    ```
+    *(Use `docker-compose down -v` para remover também o volume do banco de dados)*
 
-Collapse
+---
 
-Wrap
+## 🌐 Endpoints da API
 
-Run
+Você pode testar a API diretamente usando `curl` ou uma ferramenta como Postman:
 
-Copy
-docker-compose down
-4. Desenvolvimento do Backend (Opcional)
-Para construir e executar o backend localmente sem Docker:
+*   **Obter Créditos por Número da NFS-e:**
+    *   URL: `GET http://localhost:8080/api/creditos/{numeroNfse}`
+    *   Exemplo:
+        ```bash
+        curl http://localhost:8080/api/creditos/7891011
+        ```
 
-Navegue até o diretório backend:
-bash
+*   **Obter Detalhes de um Crédito Específico:**
+    *   URL: `GET http://localhost:8080/api/creditos/credito/{numeroCredito}`
+    *   Exemplo:
+        ```bash
+        curl http://localhost:8080/api/creditos/credito/123456
+        ```
 
-Collapse
+---
 
-Wrap
+## 💻 Desenvolvimento Local (Opcional)
 
-Run
+Se preferir executar os componentes separadamente sem Docker:
 
-Copy
-cd backend
-Construa o projeto com Maven:
-bash
+**Backend (Spring Boot):**
 
-Collapse
+1.  Navegue até o diretório `backend`.
+2.  Configure as variáveis de ambiente ou o `application.properties` para conectar a uma instância local do PostgreSQL.
+3.  Construa com Maven: `mvn clean install`
+4.  Execute a aplicação: `mvn spring-boot:run`
 
-Wrap
+**Frontend (Angular):**
 
-Run
+1.  Navegue até o diretório `frontend`.
+2.  Instale as dependências: `npm install`
+3.  Inicie o servidor de desenvolvimento: `ng serve`
+4.  Acesse em `http://localhost:4200`.
 
-Copy
-mvn clean install
-Execute a aplicação:
-bash
+---
 
-Collapse
+## 🧪 Testes
 
-Wrap
+*   **Backend:** Os testes unitários da camada de controle utilizam H2 como banco em memória.
+    ```bash
+    cd backend
+    mvn test
+    ```
+*   **Frontend:** Atualmente, não há testes automatizados implementados para o frontend.
 
-Run
+---
 
-Copy
-mvn spring-boot:run
-5. Desenvolvimento do Frontend (Opcional)
-Para desenvolver o frontend localmente sem Docker:
+## 📂 Estrutura do Projeto
 
-Navegue até o diretório frontend:
-bash
+```
+apiCredito/
+├── backend/          # Aplicação Spring Boot (API)
+│   ├── src/
+│   └── pom.xml
+├── frontend/         # Aplicação Angular (UI)
+│   ├── src/
+│   └── package.json
+├── docker-compose.yml # Orquestração dos contêineres
+└── README.md          # Este arquivo
+```
 
-Collapse
+---
 
-Wrap
+## ℹ️ Detalhes Adicionais
 
-Run
+*   **Backend:** Utiliza Spring Boot 3.x (ou versão compatível), Maven para build, e inclui tratamento de exceções customizado.
+*   **Frontend:** Desenvolvido com Angular (versão estável recente), otimizado para responsividade.
+*   **Docker:** A configuração garante que o banco de dados seja populado com dados iniciais ao iniciar os contêineres.
 
-Copy
-cd frontend
-Instale as dependências:
-bash
+---
 
-Collapse
-
-Wrap
-
-Run
-
-Copy
-npm install
-Inicie o servidor de desenvolvimento:
-bash
-
-Collapse
-
-Wrap
-
-Run
-
-Copy
-ng serve
-Acesse o frontend em http://localhost:4200.
-6. Executar Testes
-Testes do Backend: A API inclui testes na camada de controle com H2. Execute-os com:
-bash
-
-Collapse
-
-Wrap
-
-Run
-
-Copy
-cd backend
-mvn test
-Testes do Frontend: Não há testes de frontend implementados atualmente.
-📂 Estrutura do Projeto
-backend/: Contém a aplicação Spring Boot com:
-Controladores REST com tratamento de exceções.
-Testes unitários com banco H2.
-Configuração para PostgreSQL no Docker.
-frontend/: Contém a aplicação Angular com:
-Design responsivo para dispositivos móveis.
-Componentes para a interface de gestão de créditos.
-docker-compose.yml: Define a configuração dos três contêineres (PostgreSQL, API, frontend).
-ℹ️ Detalhes Adicionais
-Backend
-Framework: Spring Boot 3.5.0 (ou versão compatível mais recente).
-Banco de Dados: PostgreSQL, inicializado com registros de exemplo.
-Funcionalidades: API RESTful para operações de crédito, tratamento de exceções (ex.: classes de exceção personalizadas) e H2 para testes.
-Ferramenta de Build: Maven.
-Frontend
-Framework: Angular (versão estável mais recente).
-Compatibilidade: Otimizado para dispositivos móveis com técnicas de design responsivo (ex.: media queries CSS, flexbox).
-Ferramenta de Build: npm.
-Servidor de Desenvolvimento: ng serve para recarregamento automático durante o desenvolvimento.
-Configuração Docker
-Contêineres:
-postgres: Executa o banco de dados PostgreSQL com dados pré-carregados.
-api: Hospeda a aplicação Spring Boot, conectada ao PostgreSQL.
-frontend: Serve a aplicação Angular, construída e servida via servidor web leve (ex.: Nginx).
-Inicialização: O docker-compose.yml garante que o banco seja populado com registros iniciais ao iniciar.
+Desenvolvido por [adesdsilva](https://github.com/adesdsilva) ✨
